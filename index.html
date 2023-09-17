@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>과제를 하자</title>
+	<style type="text/css"> 
+		html{cursor: url(cursor.png), auto}
+		body {margin: 0;}
+		.box {width: 200px;height:142 ; position: absolute; background: transparent;} 
+		section {width:1200px; margin:auto;}
+		div {margin: auto;}
+		img { display : block; margin : auto; }
+		h2 {text-align: center;margin-top: 300px}
+	</style>
+</head> 
+
+<body> 
+<section>
+	<h2 id="clickCount">과제 해치운 횟수: 0</h2>
+	<div style="text-align : center;">
+		<img width="30%" src="1.jpg">
+	</div>
+	
+</section>
+
+	<script type="text/javascript">
+
+		var clickCount = 0; // 클릭 횟수를 저장하는 변수
+
+	makeBox();
+	function makeBox(){ 
+		var a = document.createElement("img");
+		a.className = "box";
+		a.src = "2.png";
+		var b = Math.random() * window.innerWidth;
+		var c = Math.random() * window.innerHeight;
+
+		a.style.left = b + "px";
+		a.style.top = c + "px";
+		a.onclick = function (){
+			clickCount++; // 클릭 횟수 증가
+			updateClickCount(); // 클릭 횟수를 업데이트하는 함수 호출
+			a.parentNode.removeChild(a);
+			makeBox();
+		} 
+		document.body.appendChild(a);
+	}
+
+		function updateClickCount() {
+		var clickCountElement = document.getElementById("clickCount");
+		clickCountElement.innerText = "과제 해치운 횟수: " + clickCount; // 화면에 클릭 횟수 업데이트
+	}
+	</script>
+</body>
+</html>
